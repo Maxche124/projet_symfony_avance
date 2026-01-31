@@ -3,10 +3,7 @@ set -e
 
 composer install --no-interaction --no-scripts
 echo "Installation terminée"
-echo "Compilation des assets..."
-php bin/console asset-map:compile
 
-echo "Compilation terminée"
 echo "Attente de MySQL..."
 until php bin/console doctrine:query:sql "SELECT 1" > /dev/null 2>&1; do
     echo "MySQL pas encore opé..."
@@ -22,7 +19,7 @@ else
 fi
 
 if [ "$(php bin/console doctrine:query:sql 'SELECT COUNT(*) FROM user' --no-interaction | grep -Eo '[0-9]+')" -eq 0 ]; then
-    echo "Table product vide, chargement des fixtures..."
+    echo "Table user vide, chargement des fixtures..."
     php bin/console doctrine:fixtures:load --no-interaction
 else
     echo "Données déjà présentes, skip des fixtures"
