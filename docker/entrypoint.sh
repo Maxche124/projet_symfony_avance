@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-composer install --no-interaction
+composer install --no-interaction --no-scripts
 echo "Installation terminée"
 echo "Compilation des assets..."
 php bin/console asset-map:compile
