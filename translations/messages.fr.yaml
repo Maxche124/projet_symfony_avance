@@ -1,0 +1,3 @@
+roles:
+    ROLE_USER: "Utilisateur"
+    ROLE_MANAGER: "Gestionnaire"

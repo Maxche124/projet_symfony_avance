@@ -1,0 +1,74 @@
+@startuml
+class Banque {
+- Map<String,Client> clients
+- Map<String,Gestionnaire> gestionnaires
+- Map<String,Compte> accounts
++ void debiter(Compte,double)
++ void crediter(Compte,double)
++ void deleteUser(String)
++ void changeDecouvert(CompteAvecDecouvert,double)
+}
+
+
+class CompteAvecDecouvert {
+- double decouvertAutorise
++ void setDecouverAutorise(double decouvertAutorise)
++ void debiter(double)
++ String toString()
+}
+
+
+abstract class Compte {
+# String numeroCompte
+# double solde
+# Client owner
++ Client getOwner()
+- void setNumeroCompte(String numeroCompte)
++ {abstract}void debiter(double)
++ void crediter(double)
++ String getClassName()
++ String toString()
++ {static} boolean checkFormatNumeroCompte(String)
+}
+
+
+class Client {
+- String numeroClient
+- Map<String,Compte> accounts
++ void setUserId(String)
++ void setNumeroClient(String numeroClient)
++ String getIdentity()
++ void addAccount(Compte)
++ {static} boolean checkFormatUserIdClient(String)
++ {static} boolean checkFormatNumeroClient(String)
++ boolean possedeComptesADecouvert()
++ Map<String,Compte> getComptesAvecSoldeNonNul()
++ String toString()
+}
+
+
+abstract class Utilisateur {
+- String userId
+- String userPwd
+- String nom
+- String prenom
+- String adresse
+- boolean male
++ String toString()
+}
+
+
+class CompteSansDecouvert {
++ void debiter(double)
++ String toString()
+}
+
+class Gestionnaire {
++ String toString()
+}
+
+Compte <|-- CompteAvecDecouvert
+Utilisateur <|-- Client
+Compte <|-- CompteSansDecouvert
+Utilisateur <|-- Gestionnaire
+@enduml
