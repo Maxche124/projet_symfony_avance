@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -100,7 +101,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
     }
 
     public function eraseCredentials(): void {
-        // TODO: Implement eraseCredentials() method.
     }
 
     public function toString(): string {
@@ -181,7 +181,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
 
     public function setGender(string $gender): static {
         if (!in_array($gender, self::GENDERS))
-            throw new \InvalidArgumentException('Le genre est invalide');
+            throw new InvalidArgumentException('Le genre est invalide');
 
         $this->gender = $gender;
 
@@ -201,13 +201,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
         return $this;
     }
 
-    public function getClient(): ?Client
-    {
+    public function getClient(): ?Client {
         return $this->client;
     }
 
-    public function setClient(Client $client): static
-    {
+    public function setClient(Client $client): static {
         // set the owning side of the relation if necessary
         if ($client->getUser() !== $this) {
             $client->setUser($this);
