@@ -6,10 +6,11 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
-class Client
-{
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_NUMBER', fields: ['numero'])]
+class Client {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -32,35 +33,35 @@ class Client
     #[ORM\JoinColumn(nullable: false)]
     private ?Banque $banque = null;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->accounts = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function getUser(): ?User
-    {
+    public function getUser(): ?User {
         return $this->user;
     }
 
-    public function setUser(User $user): static
-    {
+    public function setUser(User $user): static {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getNumero(): ?string
-    {
+    public function getIdentity(): string {
+        return $this->user->getIdentity() . " (" . $this->getNumero() . ")";
+    }
+
+    public function getNumero(): ?string {
         return $this->numero;
     }
 
-    public function setNumero(string $numero): static
-    {
+    public function setNumero(string $numero): static {
+        if (!preg_match('^\\d{10}$', $numero))
+            throw new InvalidArgumentException('Le numéro de compte doit se composer de dix chiffres');
         $this->numero = $numero;
 
         return $this;
@@ -69,13 +70,11 @@ class Client
     /**
      * @return Collection<int, Compte>
      */
-    public function getAccounts(): Collection
-    {
+    public function getAccounts(): Collection {
         return $this->accounts;
     }
 
-    public function addAccount(Compte $account): static
-    {
+    public function addAccount(Compte $account): static {
         if (!$this->accounts->contains($account)) {
             $this->accounts->add($account);
             $account->setOwner($this);
@@ -84,8 +83,7 @@ class Client
         return $this;
     }
 
-    public function removeAccount(Compte $account): static
-    {
+    public function removeAccount(Compte $account): static {
         if ($this->accounts->removeElement($account)) {
             // set the owning side to null (unless already changed)
             if ($account->getOwner() === $this) {
@@ -96,13 +94,11 @@ class Client
         return $this;
     }
 
-    public function getBanque(): ?Banque
-    {
+    public function getBanque(): ?Banque {
         return $this->banque;
     }
 
-    public function setBanque(?Banque $banque): static
-    {
+    public function setBanque(?Banque $banque): static {
         $this->banque = $banque;
 
         return $this;

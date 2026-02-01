@@ -6,8 +6,8 @@ use App\Repository\CompteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompteRepository::class)]
-class Compte
-{
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_NUMBER', fields: ['numero'])]
+class Compte {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -29,66 +29,55 @@ class Compte
     #[ORM\Column(nullable: true)]
     private ?float $decouvertAutorise = null;
 
-    public function getId(): ?int
-    {
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function getOwner(): ?Client
-    {
+    public function getOwner(): ?Client {
         return $this->owner;
     }
 
-    public function setOwner(?Client $owner): static
-    {
+    public function setOwner(?Client $owner): static {
         $this->owner = $owner;
 
         return $this;
     }
 
-    public function getNumero(): ?string
-    {
+    public function getNumero(): ?string {
         return $this->numero;
     }
 
-    public function setNumero(string $numero): static
-    {
+    public function setNumero(string $numero): static {
         $this->numero = $numero;
 
         return $this;
     }
 
-    public function getSolde(): ?float
-    {
+    public function getSolde(): ?float {
         return $this->solde;
     }
 
-    public function setSolde(float $solde): static
-    {
+    public function setSolde(float $solde): static {
         $this->solde = $solde;
 
         return $this;
     }
 
-    public function isDecouvert(): ?bool
-    {
+    public function isDecouvert(): ?bool {
         return $this->decouvert;
     }
 
-    public function setDecouvert(bool $decouvert): static
-    {
+    public function setDecouvert(bool $decouvert): static {
         $this->decouvert = $decouvert;
 
         return $this;
     }
 
-    public function getDecouvertAutorise(): ?float
-    {
+    public function getDecouvertAutorise(): ?float {
         return $this->decouvertAutorise;
     }
 
-    public function setDecouvertAutorise(?float $decouvertAutorise): static
-    {
+    public function setDecouvertAutorise(?float $decouvertAutorise): static {
         $this->decouvertAutorise = $decouvertAutorise;
 
         return $this;
