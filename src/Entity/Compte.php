@@ -55,7 +55,7 @@ class Compte {
      */
     public function setNumero(string $numero): static {
         if (!preg_match($this->numeroRegex, $numero))
-            throw new InvalidStringFormat($numero, "Le numéro doit suivre le pattern {$this->numeroRegex}");
+            throw new InvalidStringFormat($numero, "Le numéro doit suivre le pattern $this->numeroRegex");
         $this->numero = $numero;
 
         return $this;

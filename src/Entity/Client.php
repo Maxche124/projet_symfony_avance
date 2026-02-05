@@ -29,9 +29,6 @@ class Client {
     #[ORM\OneToMany(targetEntity: Compte::class, mappedBy: 'owner')]
     private Collection $accounts;
 
-    #[ORM\ManyToOne(inversedBy: 'clients')]
-    private ?Banque $banque = null;
-
     public function __construct() {
         $this->accounts = new ArrayCollection();
     }
@@ -93,13 +90,4 @@ class Client {
         return $this;
     }
 
-    public function getBanque(): ?Banque {
-        return $this->banque;
-    }
-
-    public function setBanque(?Banque $banque): static {
-        $this->banque = $banque;
-
-        return $this;
-    }
 }
