@@ -119,6 +119,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
     }
 
     public function getRoleString(): string {
+        //Avec une version plus récente, on pourrait utiliser directement un enum mais en v7 c'est plus simple de faire ça manuellement
         $output = [];
         foreach ($this->roles as $role) {
             switch ($role) {
@@ -198,6 +199,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
     public function setPassword(string $password): static {
         $this->password = $password;
 
+        return $this;
+    }
+
+    public function setGestionnaire(): static {
+        if ($this)
+            return $this;
+    }
+
+    public function removeGestionnaire(): static {
         return $this;
     }
 

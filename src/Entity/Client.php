@@ -30,7 +30,6 @@ class Client {
     private Collection $accounts;
 
     #[ORM\ManyToOne(inversedBy: 'clients')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Banque $banque = null;
 
     public function __construct() {
