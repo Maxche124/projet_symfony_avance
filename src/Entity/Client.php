@@ -56,7 +56,7 @@ class Client {
     }
 
     public function setNumero(string $numero): static {
-        if (!preg_match('^\\d{10}$', $numero))
+        if (!preg_match('/^\d{10}$/', $numero))
             throw new InvalidArgumentException('Le numéro de compte doit se composer de dix chiffres');
         $this->numero = $numero;
 
