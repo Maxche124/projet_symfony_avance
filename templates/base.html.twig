@@ -1,15 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Banque{% endblock %}</title>
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Banque{% endblock %}</title>
 
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </head>
-    <body>
+    {% block stylesheets %}
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                background: #f4f6f9;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1100px;
+                margin: auto;
+            }
+
+            .site-header {
+                background: #1e3a8a;
+                padding: 15px 0;
+            }
+
+            .header-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between; /* logo gauche / menu droite */
+            }
+
+            .logo-link {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+            }
+
+            .logo-img {
+                height: 70px; /* 🔥 plus grand */
+                display: block;
+            }
+
+            .site-header nav {
+                display: flex;
+                align-items: center;
+                gap: 30px; /* espace entre boutons */
+            }
+
+            .site-header nav a {
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            main {
+                flex: 1; 
+                padding: 40px 0;
+                text-align: center;
+            }
+
+            .site-footer {
+                background: #111827;
+                color: white;
+                text-align: center;
+                padding: 20px 0;
+            }
+        </style>
+    {% endblock %}
+
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% block javascripts %}{% endblock %}
+</head>
+<body>
+
+    {% include 'partials/_header.html.twig' %}
+
+    <main>
         {% block body %}{% endblock %}
-    </body>
+    </main>
+
+    {% include 'partials/_footer.html.twig' %}
+
+</body>
 </html>
