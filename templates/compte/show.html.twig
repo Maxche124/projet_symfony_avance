@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+    <h1>Compte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ compte.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ compte.numero }}</td>
+            </tr>
+            <tr>
+                <th>Solde</th>
+                <td>{{ compte.solde }}</td>
+            </tr>
+            <tr>
+                <th>Decouvert</th>
+                <td>{{ compte.decouvert ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>DecouvertAutorise</th>
+                <td>{{ compte.decouvertAutorise }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_compte_index') }}">back to list</a>
+
+    <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">edit</a>
+
+    {{ include('compte/_delete_form.html.twig') }}
+{% endblock %}
