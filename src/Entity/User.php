@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface, PasswordAuthenticatedUserInterface {
     public const GENDER_MALE = "Homme";
     public const GENDER_FEMALE = "Femme";
-    public const GENDER_OTHER = "Autre/Non communiqué";
+    public const GENDER_OTHER = "Autre";
 
     public const GENDERS = [
         self::GENDER_MALE,
