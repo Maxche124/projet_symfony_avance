@@ -3,7 +3,7 @@ home:
     text: "Please log in to access your account."
 
 header:
-    home: "Accueil"
+    home: "home"
 
 login:
     loggedAs: "You are logged in as "
