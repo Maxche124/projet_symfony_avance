@@ -29,8 +29,12 @@ final class CompteController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function mesComptes(CompteRepository $compteRepository): Response
     {
+        $client = $this->getUser()->getClient();
+
+        $comptes = $compteRepository->findBy(['owner' => $client]);
+
         return $this->render('compte/index.html.twig', [
-            'comptes' => $compteRepository->findBy(['user' => $this->getUser()]),
+            'comptes' => $comptes,
         ]);
     }
 

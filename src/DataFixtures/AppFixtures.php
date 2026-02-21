@@ -24,7 +24,8 @@ class AppFixtures extends Fixture
                 'lastName' => 'Dupont',
                 'adresse' => '123 Rue de la Paix, 75000 Paris',
                 'gender' => User::GENDER_MALE,
-                'password' => 'password123'
+                'password' => 'password123',
+                'roles' => ['ROLE_MANAGER']
             ],
             [
                 'email' => 'marie.martin@example.com',
@@ -32,7 +33,8 @@ class AppFixtures extends Fixture
                 'lastName' => 'Martin',
                 'adresse' => '456 Avenue des Champs, 75008 Paris',
                 'gender' => User::GENDER_FEMALE,
-                'password' => 'password123'
+                'password' => 'password123',
+                'roles' => ['ROLE_USER']
             ],
             [
                 'email' => 'pierre.bernard@example.com',
@@ -40,7 +42,8 @@ class AppFixtures extends Fixture
                 'lastName' => 'Bernard',
                 'adresse' => '789 Boulevard Saint-Germain, 75005 Paris',
                 'gender' => User::GENDER_OTHER,
-                'password' => 'password123'
+                'password' => 'password123',
+                'roles' => ['ROLE_USER']
             ],
             [
                 'email' => 'sophie.thomas@example.com',
@@ -48,7 +51,8 @@ class AppFixtures extends Fixture
                 'lastName' => 'Thomas',
                 'adresse' => '321 Rue de Rivoli, 75001 Paris',
                 'gender' => User::GENDER_FEMALE,
-                'password' => 'password123'
+                'password' => 'password123',
+                'roles' => ['ROLE_USER']
             ]
         ];
 
@@ -60,11 +64,12 @@ class AppFixtures extends Fixture
             $user->setLastName($userData['lastName']);
             $user->setAdresse($userData['adresse']);
             $user->setGender($userData['gender']);
-            $user->setRoles(['ROLE_USER']);
-            
+            $user->setRoles($userData['roles']);
+
+
             $hashedPassword = $this->passwordHasher->hashPassword($user, $userData['password']);
             $user->setPassword($hashedPassword);
-            
+
             $manager->persist($user);
             $users[] = $user;
         }
@@ -83,7 +88,7 @@ class AppFixtures extends Fixture
             $client->setUser($user);
             $user->setClient($client);
             $client->setNumero($clientData['numero']);
-            
+
             $manager->persist($client);
             $clients[] = $client;
         }

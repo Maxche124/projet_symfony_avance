@@ -17,6 +17,7 @@ password: "Mot de passe"
 connexion: "Connexion"
 delete: "Supprimer"
 backToList: "Retourner à la liste"
+logout: "Déconnexion"
 
 
 EditClient:
@@ -51,6 +52,8 @@ AccountList:
     show: "Détails"
     edit: "Modifier"
     noAccount: "Aucun compte trouvé"
+    new: "Créer un nouveau compte"
+
 
 NewAccount:
     title: "Créer un nouveau compte"

@@ -14,7 +14,7 @@ password: "password"
 connexion: "Sign in"
 delete: "Delete"
 backToList: "Back to list"
-
+logout: "Log out"
 
 EditClient:
     title:  "Edit client"

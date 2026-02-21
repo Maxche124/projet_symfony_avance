@@ -22,8 +22,8 @@
                 <td>{{ compte.id }}</td>
                 <td>{{ compte.numero }}</td>
                 <td>{{ compte.solde }}</td>
-                <td>{{ compte.decouvert ? 'Yes' : 'No' }}</td>
-                <td>{{ compte.decouvertAutorise }}</td>
+                <td>{{ compte.getDecouvertStatus() ? 'Yes' : 'No' }}</td>
+                <td>{{ compte.getMontantDecouvert() }}</td>
                 <td>
                     <a href="{{ path('app_compte_show', {'id': compte.id}) }}">{{ 'AccountList.show'|trans }}</a>
                     <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">{{ 'AccountList.edit'|trans }}</a>
