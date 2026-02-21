@@ -8,15 +8,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>Adresse</th>
-                <th>Gender</th>
-                <th>actions</th>
+                <th>{{ 'UserList.id'|trans }}</th>
+                <th>{{ 'UserList.email'|trans }}</th>
+                <th>{{ 'UserList.roles'|trans }}</th>
+                <th>{{ 'UserList.password'|trans }}</th>
+                <th>{{ 'UserList.firstName'|trans }}</th>
+                <th>{{ 'UserList.lastName'|trans }}</th>
+                <th>{{ 'UserList.address'|trans }}</th>
+                <th>{{ 'UserList.gender'|trans }}</th>
+                <th>{{ 'UserList.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -31,17 +31,17 @@
                 <td>{{ user.adresse }}</td>
                 <td>{{ user.gender }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">{{ 'UserList.show'|trans }}</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'UserList.edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="9">{{ 'UserList.noUser'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+    <a href="{{ path('app_user_new') }}">{{ 'UserList.new'|trans }}</a>
 {% endblock %}

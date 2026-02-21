@@ -4,8 +4,8 @@
             <img src="{{ asset('../assets/images/logo_iut.png') }}" alt="Logo Banque" class="logo-img">
         </a>
         <nav>
-            <a href="/">Accueil</a>
-            <a href="{{ path('app_login') }}">Connexion</a>
+            <a href="/">{{ 'header.home'|trans }}</a>
+            <a href="{{ path('app_login') }}">{{ 'connexion'|trans }}</a>
         </nav>
     </div>
     <div>

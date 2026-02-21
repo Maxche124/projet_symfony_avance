@@ -6,6 +6,78 @@ home:
     title: "Bienvenue sur votre application bancaire"
     text: "Veuillez vous connecter pour avoir accès à votre compte."
 
+header:
+    home: "Accueil"
+
 login:
     loggedAs: "Vous êtes connecté en tant que "
-    title: "Connexion"
+
+email: "Email"
+password: "Mot de passe"
+connexion: "Connexion"
+delete: "Supprimer"
+backToList: "Retourner à la liste"
+
+
+EditClient:
+    title:  "Modifier le client"
+
+ClientList:
+    title: "Liste des clients"
+    id: "Id"
+    customerNumber: "Numéro client"
+    actions: "Actions"
+    show: "Détails"
+    edit: "Modifier"
+    noClient: "Aucun client trouvé"
+    new: "Nouveau client"
+
+NewClient:
+    title: "Créer un nouveau client"
+
+ShowClient:
+    title: "Client"
+
+EditAccount:
+    title: "Modifier le compte"
+
+AccountList:
+    id: "Id"
+    accountNumber: "Numéro de compte"
+    balance: "Solde"
+    overdraft: "Découvert"
+    overdraftAuthorized: "Découvert autorisé"
+    actions: "Actions"
+    show: "Détails"
+    edit: "Modifier"
+    noAccount: "Aucun compte trouvé"
+
+NewAccount:
+    title: "Créer un nouveau compte"
+
+ShowAccount:
+    title: "Compte"
+
+EditUser:
+    title: "Modifier l'utilisateur"
+
+UserList:
+    id: "Id"
+    email: "Email"
+    roles: "Rôle"
+    password: "Mot de passe"
+    firstName: "Prénom"
+    lastName: "Nom"
+    address: "Adresse"
+    gender: "Genre"
+    actions: "Actions"
+    edit: "Modifier"
+    show: "Détails"
+    noUser: "Aucun utilisateur trouvé"
+    new: "Créer un nouvel utilisateur"
+
+NewUser:
+    title: "Créer un nouvel utilisateur"
+
+ShowUser:
+    title: "Utilisateur"

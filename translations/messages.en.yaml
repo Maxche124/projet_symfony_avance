@@ -2,6 +2,86 @@ home:
     title: "Welcome to your banking application"
     text: "Please log in to access your account."
 
+header:
+    home: "Accueil"
+
 login:
     loggedAs: "You are logged in as "
     title: "Please sign in"
+
+email: "Email"
+password: "password"
+connexion: "Sign in"
+delete: "Delete"
+backToList: "Back to list"
+
+
+EditClient:
+    title:  "Edit client"
+
+ClientList:
+    title: "Client list"
+    id: "Id"
+    customerNumber: "Customer number"
+    actions: "Actions"
+    show: "Show"
+    edit: "Edit"
+    noClient: "No records found"
+    new: "Create new"
+
+NewClient:
+    title: "Create a new client"
+
+ShowClient:
+    title: "Client"
+
+EditAccount:
+    title: "Edit account"
+
+AccountList:
+    id: "Id"
+    accountNumber: "Numéro de compte"
+    balance: "Balance"
+    overdraft: "Overdraft"
+    overdraftAuthorized: "Authorized overdraft"
+    actions: "Actions"
+    show: "Show"
+    edit: "Edit"
+    noAccount: "No record found"
+    new: "Create new"
+
+NewAccount:
+    title: "Create a new account"
+
+ShowAccount:
+    title: "Account"
+
+EditUser:
+    title: "Edit user"
+
+UserList:
+    id: "Id"
+    email: "Email"
+    roles: "Rôle"
+    password: "Password"
+    firstName: "First name"
+    lastName: "Last name"
+    address: "Address"
+    gender: "Gender"
+    actions: "Actions"
+    noUser: "No records found"
+    new: "Create new"
+
+NewUser:
+    title: "Crate a new user"
+
+ShowUser:
+    title: "User"
+
+
+
+
+
+
+
+

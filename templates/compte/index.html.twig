@@ -8,12 +8,12 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Numero</th>
-                <th>Solde</th>
-                <th>Decouvert</th>
-                <th>DecouvertAutorise</th>
-                <th>actions</th>
+                <th>{{ 'AccountList.id'|trans }}</th>
+                <th>{{ 'AccountList.accountNumber'|trans }}</th>
+                <th>{{ 'AccountList.balance'|trans }}</th>
+                <th>{{ 'AccountList.overdraft'|trans }}</th>
+                <th>{{ 'AccountList.overdraftAuthorized'|trans }}</th>
+                <th>{{ 'AccountList.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -25,17 +25,17 @@
                 <td>{{ compte.decouvert ? 'Yes' : 'No' }}</td>
                 <td>{{ compte.decouvertAutorise }}</td>
                 <td>
-                    <a href="{{ path('app_compte_show', {'id': compte.id}) }}">show</a>
-                    <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">edit</a>
+                    <a href="{{ path('app_compte_show', {'id': compte.id}) }}">{{ 'AccountList.show'|trans }}</a>
+                    <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">{{ 'AccountList.edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">{{ 'AccountList.noAccount'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_compte_new') }}">Create new</a>
+    <a href="{{ path('app_compte_new') }}">{{ 'AccountList.new'|trans }}</a>
 {% endblock %}

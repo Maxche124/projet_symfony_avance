@@ -3,14 +3,14 @@
 {% block title %}Client index{% endblock %}
 
 {% block body %}
-    <h1>Client index</h1>
+    <h1>{{ 'ClientList.title'|trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Numero</th>
-                <th>actions</th>
+                <th>{{ 'ClientList.id'|trans }}</th>
+                <th>{{ 'ClientList.customerNumber'|trans }}</th>
+                <th>{{ 'ClientList.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ client.id }}</td>
                 <td>{{ client.numero }}</td>
                 <td>
-                    <a href="{{ path('app_client_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}">{{ 'ClientList.show'|trans }}</a>
+                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">{{ 'ClientList.edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{ 'ClientList.noClient'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_client_new') }}">Create new</a>
+    <a href="{{ path('app_client_new') }}">{{ 'ClientList.new'|trans }}</a>
 {% endblock %}

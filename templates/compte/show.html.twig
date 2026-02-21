@@ -3,36 +3,36 @@
 {% block title %}Compte{% endblock %}
 
 {% block body %}
-    <h1>Compte</h1>
+    <h1>{{ 'ShowAccount.title'|trans }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'AccountList.id'|trans }}</th>
                 <td>{{ compte.id }}</td>
             </tr>
             <tr>
-                <th>Numero</th>
+                <th>{{ 'AccountList.accountNumber'|trans }}</th>
                 <td>{{ compte.numero }}</td>
             </tr>
             <tr>
-                <th>Solde</th>
+                <th>{{ 'AccountList.balance'|trans }}</th>
                 <td>{{ compte.solde }}</td>
             </tr>
             <tr>
-                <th>Decouvert</th>
+                <th>{{ 'AccountListe.overdraft'|trans }}</th>
                 <td>{{ compte.decouvert ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>DecouvertAutorise</th>
+                <th>{{ 'AccountList.overdraftAuthorized'|trans }}</th>
                 <td>{{ compte.decouvertAutorise }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_compte_index') }}">back to list</a>
+    <a href="{{ path('app_compte_index') }}">{{ 'backToList'|trans }}</a>
 
-    <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">edit</a>
+    <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">{{ 'AccountListe.edit'|trans }}</a>
 
     {{ include('compte/_delete_form.html.twig') }}
 {% endblock %}

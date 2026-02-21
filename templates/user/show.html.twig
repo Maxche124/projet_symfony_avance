@@ -3,48 +3,48 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <h1>{{ 'ShowUser.title'|trans }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'UserList.id'|trans }}</th>
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>{{ 'UserList.email'|trans }}</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
+                <th>{{ 'UserList.roles'|trans }}</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>{{ 'UserList.password'|trans }}</th>
                 <td>{{ user.password }}</td>
             </tr>
             <tr>
-                <th>FirstName</th>
+                <th>{{ 'UserList.firstName'|trans }}</th>
                 <td>{{ user.firstName }}</td>
             </tr>
             <tr>
-                <th>LastName</th>
+                <th>{{ 'UserList.lastName'|trans }}</th>
                 <td>{{ user.lastName }}</td>
             </tr>
             <tr>
-                <th>Adresse</th>
+                <th>{{ 'UserList.address'|trans }}</th>
                 <td>{{ user.adresse }}</td>
             </tr>
             <tr>
-                <th>Gender</th>
+                <th>{{ 'UserList.gender'|trans }}</th>
                 <td>{{ user.gender }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+    <a href="{{ path('app_user_index') }}">{{ 'backToList' }}</a>
 
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+    <a href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'UserList.edit'|trans }}</a>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}
