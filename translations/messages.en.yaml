@@ -1,0 +1,7 @@
+home:
+    title: "Welcome to your banking application"
+    text: "Please log in to access your account."
+
+login:
+    loggedAs: "You are logged in as "
+    title: "Please sign in"

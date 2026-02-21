@@ -5,7 +5,15 @@
         </a>
         <nav>
             <a href="/">Accueil</a>
-            <a href="/login">Connexion</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
         </nav>
+    </div>
+    <div>
+        <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params') | merge({'_locale': 'fr'})) }}">
+            <img src="{{ asset('assets/images/fr-flag.png') }}" alt="FR" class="rounded" width="24">
+        </a>
+        <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params') | merge({'_locale': 'en'})) }}">
+            <img src="{{ asset('assets/images/en-flag.png') }}" alt="EN" class="rounded" width="24">
+        </a>
     </div>
 </header>

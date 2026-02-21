@@ -1,9 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Bienvenue sur votre application bancaire</h2>
+    <h2>{{ 'home.title'|trans }}</h2>
 
-    <p>
-        Veuillez vous connecter pour avoir accès à votre compte.
-    </p>
+    <p>{{ 'home.text'|trans }}</p>
 {% endblock %}
