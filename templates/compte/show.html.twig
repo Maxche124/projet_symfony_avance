@@ -20,12 +20,12 @@
                 <td>{{ compte.solde }}</td>
             </tr>
             <tr>
-                <th>{{ 'AccountListe.overdraft'|trans }}</th>
-                <td>{{ compte.decouvert ? 'Yes' : 'No' }}</td>
+                <th>{{ 'AccountList.overdraftAuthorized'|trans }}</th>
+                <td>{{ compte.decouvertAutorise ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>{{ 'AccountList.overdraftAuthorized'|trans }}</th>
-                <td>{{ compte.decouvertAutorise }}</td>
+                <th>{{ 'AccountList.overdraft'|trans }}</th>
+                <td>{{ compte.decouvert }}</td>
             </tr>
         </tbody>
     </table>
