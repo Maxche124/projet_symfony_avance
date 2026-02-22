@@ -3,6 +3,7 @@
 {% block title %}Client index{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
     <h1>{{ 'ClientList.title'|trans }}</h1>
 
     <table class="table">
@@ -19,8 +20,8 @@
                 <td>{{ client.id }}</td>
                 <td>{{ client.numero }}</td>
                 <td>
-                    <a href="{{ path('app_client_show', {'id': client.id}) }}">{{ 'ClientList.show'|trans }}</a>
-                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">{{ 'ClientList.edit'|trans }}</a>
+                    <a class="btn btn-sm btn-outline-primary" href="{{ path('app_client_show', {'id': client.id}) }}">{{ 'ClientList.show'|trans }}</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_client_edit', {'id': client.id}) }}">{{ 'ClientList.edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +32,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_client_new') }}">{{ 'ClientList.new'|trans }}</a>
+    <a class="btn btn-primary mt-3" href="{{ path('app_client_new') }}">{{ 'ClientList.new'|trans }}</a>
 {% endblock %}
