@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Compte;
+use App\Exceptions\InvalidAmountFormat;
 use App\Form\CompteType;
 use App\Repository\CompteRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -59,10 +60,30 @@ final class CompteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_compte_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_compte_show', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_MANAGER')]
-    public function show(Compte $compte): Response
+    public function show(Request $request, Compte $compte, EntityManagerInterface $entityManager): Response
     {
+        if($request->isMethod('POST')) {
+            $montant = (float) $request->request->get('montant');
+            $action = $request->request->get('action');
+
+            try {
+                if($action === 'credit') {
+                    $compte->crediter($montant);
+                    $this->addFlash('success', 'Le compte a été crédité de '.$montant.' €');
+                } elseif ($action === 'debit') {
+                    $compte->debiter($montant);
+                    $this->addFlash('success', 'Le compte a été débité de '.$montant.' €');
+                }
+                $entityManager->flush();
+            } catch (InvalidAmountFormat $error) {
+                $this->addFlash('error', $error->getMessage());
+            } catch (\Exception $error) {
+                $this->addFlash('error', 'Une erreur technique est survenu: '.$error->getMessage());
+            }
+        }
+
         return $this->render('compte/show.html.twig', [
             'compte' => $compte,
         ]);
