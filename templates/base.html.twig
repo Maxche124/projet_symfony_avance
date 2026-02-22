@@ -5,6 +5,8 @@
     <title>{% block title %}Banque{% endblock %}</title>
 
     {% block stylesheets %}
+        {# link to compiled CSS from assets/styles/app.css #}
+        <link rel="stylesheet" href="{{ asset('assets/styles/app.css') }}">
         <style>
             html, body {
                 height: 100%;

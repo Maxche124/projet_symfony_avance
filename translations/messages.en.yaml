@@ -40,15 +40,26 @@ EditAccount:
 
 AccountList:
     id: "Id"
-    accountNumber: "Numéro de compte"
+    accountNumber: "Account number"
     balance: "Balance"
     overdraft: "Overdraft"
     overdraftAuthorized: "Authorized overdraft"
     actions: "Actions"
     show: "Show"
     edit: "Edit"
+    spar: "Deposit"
+    withdraw: "Withdraw"
     noAccount: "No record found"
     new: "Create new"
+
+EpargnerAccount:
+    title: "Deposit to account"
+
+DebiterAccount:
+    title: "Withdraw from account"
+
+form:
+    amount: "Amount"
 
 NewAccount:
     title: "Create a new account"

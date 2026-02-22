@@ -4,8 +4,17 @@
             <img src="{{ asset('../assets/images/logo_iut.png') }}" alt="Logo Banque" class="logo-img">
         </a>
         <nav>
-            <a href="/">{{ 'header.home'|trans }}</a>
-            <a href="{{ path('app_login') }}">{{ 'connexion'|trans }}</a>
+            <a href="/">{{ 'header.home'|trans }}</a>            
+            {% if app.user %}
+                {% if is_granted('ROLE_MANAGER') %}
+                    <a href="{{ path('app_client_index') }}">{{ 'header.clients'|trans }}</a>
+                {% else %}
+                    <a href="{{ path('app_compte_client') }}">{{ 'header.my_accounts'|trans }}</a>
+                {% endif %}
+                <a href="{{ path('app_logout') }}">{{ 'Déconnexion'|trans }}</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">{{ 'Connexion'|trans }}</a>
+            {% endif %}
         </nav>
     </div>
     <div class="locale-switcher">

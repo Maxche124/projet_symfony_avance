@@ -3,5 +3,7 @@
 {% block body %}
     <h2>{{ 'home.title'|trans }}</h2>
 
-    <p>{{ 'home.text'|trans }}</p>
+    {% if not app.user %}
+        <p>{{ 'home.text'|trans }}</p>
+    {% endif %}
 {% endblock %}

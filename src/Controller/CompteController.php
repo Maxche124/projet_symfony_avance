@@ -39,6 +39,61 @@ final class CompteController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/epargner', name: 'app_compte_epargner', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
+    public function epargner(Request $request, Compte $compte, EntityManagerInterface $entityManager): Response
+    {
+        // managers can operate on any account; users only on their own
+        if (!$this->isGranted('ROLE_MANAGER') && $compte->getOwner() !== $this->getUser()->getClient()) {
+            throw $this->createAccessDeniedException();
+        }
+
+        if ($request->isMethod('POST')) {
+            $montant = (float) $request->request->get('montant');
+            try {
+                $compte->crediter($montant);
+                $entityManager->flush();
+                $this->addFlash('success', 'Le compte a été crédité de ' . $montant . ' €');
+                return $this->redirectToRoute('app_compte_client');
+            } catch (InvalidAmountFormat $error) {
+                $this->addFlash('error', $error->getMessage());
+            }
+        }
+
+        return $this->render('compte/epargner.html.twig', [
+            'compte' => $compte,
+        ]);
+    }
+
+    #[Route('/{id}/debiter', name: 'app_compte_debiter', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
+    public function debiter(Request $request, Compte $compte, EntityManagerInterface $entityManager): Response
+    {
+        if (!$this->isGranted('ROLE_MANAGER') && $compte->getOwner() !== $this->getUser()->getClient()) {
+            throw $this->createAccessDeniedException();
+        }
+
+        if ($request->isMethod('POST')) {
+            $montant = (float) $request->request->get('montant');
+            try {
+                $compte->debiter($montant);
+                $entityManager->flush();
+                $this->addFlash('success', 'Le compte a été débité de ' . $montant . ' €');
+                return $this->redirectToRoute('app_compte_client');
+            } catch (InvalidAmountFormat $error) {
+                if (!$compte->getDecouvertStatus() && $montant > $compte->getSolde()) {
+                    $this->addFlash('error', 'Vous ne pouvez pas débiter cette somme : le découvert n\'est pas autorisé sur ce compte');
+                } else {
+                    $this->addFlash('error', $error->getMessage());
+                }
+            }
+        }
+
+        return $this->render('compte/debiter.html.twig', [
+            'compte' => $compte,
+        ]);
+    }
+
     #[Route('/new', name: 'app_compte_new', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_MANAGER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

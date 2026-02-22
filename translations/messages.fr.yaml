@@ -8,6 +8,8 @@ home:
 
 header:
     home: "Accueil"
+    clients: "Clients"
+    my_accounts: "Mes comptes"
 
 login:
     loggedAs: "Vous êtes connecté en tant que "
@@ -51,8 +53,19 @@ AccountList:
     actions: "Actions"
     show: "Détails"
     edit: "Modifier"
+    spar: "Épargner"
+    withdraw: "Débiter"
     noAccount: "Aucun compte trouvé"
     new: "Créer un nouveau compte"
+
+EpargnerAccount:
+    title: "Épargner sur le compte"
+
+DebiterAccount:
+    title: "Débiter le compte"
+
+form:
+    amount: "Montant"
 
 
 NewAccount:

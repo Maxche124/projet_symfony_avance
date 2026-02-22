@@ -3,7 +3,10 @@
 {% block title %}Compte index{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
     <h1>Compte index</h1>
+
+    {% set is_client_view = app.request.attributes.get('_route') == 'app_compte_client' %}
 
     <table class="table">
         <thead>
@@ -25,8 +28,13 @@
                 <td>{{ compte.getDecouvertStatus() ? 'Yes' : 'No' }}</td>
                 <td>{{ compte.getMontantDecouvert() }}</td>
                 <td>
-                    <a href="{{ path('app_compte_show', {'id': compte.id}) }}">{{ 'AccountList.show'|trans }}</a>
-                    <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">{{ 'AccountList.edit'|trans }}</a>
+                    {% if is_client_view %}
+                        <a class="btn btn-sm btn-success" href="{{ path('app_compte_epargner', {'id': compte.id}) }}">{{ 'AccountList.spar'|trans }}</a>
+                        <a class="btn btn-sm btn-danger" href="{{ path('app_compte_debiter', {'id': compte.id}) }}">{{ 'AccountList.withdraw'|trans }}</a>
+                    {% else %}
+                        <a class="btn btn-sm btn-outline-primary" href="{{ path('app_compte_show', {'id': compte.id}) }}">{{ 'AccountList.show'|trans }}</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_compte_edit', {'id': compte.id}) }}">{{ 'AccountList.edit'|trans }}</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -37,5 +45,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_compte_new') }}">{{ 'AccountList.new'|trans }}</a>
+    {% if not is_client_view %}
+        <a class="btn btn-primary mt-3" href="{{ path('app_compte_new') }}">{{ 'AccountList.new'|trans }}</a>
+    {% endif %}
 {% endblock %}
