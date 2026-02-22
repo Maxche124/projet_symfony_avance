@@ -82,6 +82,16 @@ class Compte {
         return $this;
     }
 
+    // getters/setters used by forms and other consumers
+    public function getDecouvertAutorise(): float {
+        return $this->decouvertAutorise;
+    }
+
+    public function setDecouvertAutorise(float $decouvertAutorise): static {
+        // reuse logic from setMontantDecouvert to validate
+        return $this->setMontantDecouvert($decouvertAutorise);
+    }
+
     public function getSolde(): float {
         return $this->solde;
     }
@@ -127,6 +137,16 @@ class Compte {
      * Renvoie un booléen représentant l'autorisation de découvert
      * @return bool
      */
+    // basic accessor for the raw property used by forms
+    public function isDecouvert(): bool {
+        return $this->decouvert;
+    }
+
+    public function setDecouvert(bool $decouvert): static {
+        $this->decouvert = $decouvert;
+        return $this;
+    }
+
     public function getDecouvertStatus(): bool {
         return $this->decouvert;
     }
