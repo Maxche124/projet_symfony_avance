@@ -50,10 +50,18 @@ final class CompteController extends AbstractController
 
         if ($request->isMethod('POST')) {
             $montant = (float) $request->request->get('montant');
+            $MAX_MONTANT = 999_000_000;
             try {
+                if ($montant <= 0) {
+                    throw new \InvalidArgumentException('Le montant doit être supérieur à 0.');
+                }
+                if ($montant > $MAX_MONTANT) {
+                    throw new \InvalidArgumentException('Le montant maximum autorisé est de 999 000 000 €.');
+                }
                 $compte->crediter($montant);
                 $entityManager->flush();
-                $this->addFlash('success', 'Le compte a été crédité de ' . $montant . ' €');
+                $this->addFlash('success', 'Le compte a été crédité de ' . number_format($montant, 2, ',', ' ') . ' €');
+                
                 return $this->redirectToRoute('app_compte_client');
             } catch (InvalidAmountFormat $error) {
                 $this->addFlash('error', $error->getMessage());

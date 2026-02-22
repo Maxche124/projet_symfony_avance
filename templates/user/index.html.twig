@@ -3,6 +3,7 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
     <h1>User index</h1>
 
     <table class="table">
@@ -31,8 +32,8 @@
                 <td>{{ user.adresse }}</td>
                 <td>{{ user.gender }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">{{ 'UserList.show'|trans }}</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'UserList.edit'|trans }}</a>
+                    <a class="btn btn-sm btn-outline-primary" href="{{ path('app_user_show', {'id': user.id}) }}">{{ 'UserList.show'|trans }}</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'UserList.edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">{{ 'UserList.new'|trans }}</a>
+    <a class="btn btn-primary mt-3" href="{{ path('app_user_new') }}">{{ 'UserList.new'|trans }}</a>
 {% endblock %}
