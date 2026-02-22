@@ -25,7 +25,7 @@ final class CompteController extends AbstractController
         ]);
     }
 
-    #[Route('mes_comptes',name: 'app_compte_client', methods: ['GET'])]
+    #[Route('/mes-comptes',name: 'app_compte_client', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function mesComptes(CompteRepository $compteRepository): Response
     {
