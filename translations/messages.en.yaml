@@ -4,6 +4,7 @@ home:
 
 header:
     home: "home"
+    all_accounts: "Accounts"
 
 login:
     loggedAs: "You are logged in as "

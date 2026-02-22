@@ -9,6 +9,7 @@ home:
 header:
     home: "Accueil"
     clients: "Clients"
+    all_accounts: "Comptes"
     my_accounts: "Mes comptes"
 
 login:

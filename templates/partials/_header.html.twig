@@ -8,6 +8,7 @@
             {% if app.user %}
                 {% if is_granted('ROLE_MANAGER') %}
                     <a href="{{ path('app_client_index') }}">{{ 'header.clients'|trans }}</a>
+                    <a href="{{ path('app_compte_index') }}">{{ 'header.all_accounts'|trans }}</a>
                 {% else %}
                     <a href="{{ path('app_compte_client') }}">{{ 'header.my_accounts'|trans }}</a>
                 {% endif %}
