@@ -17,57 +17,6 @@ delete: "Delete"
 backToList: "Back to list"
 logout: "Log out"
 
-EditClient:
-    title:  "Edit client"
-
-ClientList:
-    title: "Client list"
-    id: "Id"
-    customerNumber: "Customer number"
-    actions: "Actions"
-    show: "Show"
-    edit: "Edit"
-    noClient: "No records found"
-    new: "Create new"
-
-NewClient:
-    title: "Create a new client"
-
-ShowClient:
-    title: "Client"
-
-EditAccount:
-    title: "Edit account"
-
-AccountList:
-    id: "Id"
-    accountNumber: "Account number"
-    balance: "Balance"
-    overdraft: "Overdraft"
-    overdraftAuthorized: "Authorized overdraft"
-    actions: "Actions"
-    show: "Show"
-    edit: "Edit"
-    spar: "Deposit"
-    withdraw: "Withdraw"
-    noAccount: "No record found"
-    new: "Create new"
-
-EpargnerAccount:
-    title: "Deposit to account"
-
-DebiterAccount:
-    title: "Withdraw from account"
-
-form:
-    amount: "Amount"
-
-NewAccount:
-    title: "Create a new account"
-
-ShowAccount:
-    title: "Account"
-
 EditUser:
     title: "Edit user"
 
