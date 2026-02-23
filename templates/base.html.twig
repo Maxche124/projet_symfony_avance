@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Banque{% endblock %}</title>
+    <title>{% block title %}Application{% endblock %}</title>
 
     {% block stylesheets %}
         <style>
@@ -15,55 +15,78 @@
 
             body {
                 display: flex;
-                flex-direction: column;
             }
 
-            .container {
-                width: 90%;
-                max-width: 1100px;
-                margin: auto;
-            }
+            /* ===== SIDEBAR ===== */
 
-            .site-header {
+            .sidebar {
+                width: 250px;
                 background: #1e3a8a;
-                padding: 15px 0;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 25px 15px;
             }
 
-            .header-container {
+            .sidebar-top {
                 display: flex;
-                align-items: center;
-                justify-content: space-between; /* logo gauche / menu droite */
-            }
-
-            .logo-link {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
+                flex-direction: column;
+                gap: 30px;
             }
 
             .logo-img {
-                height: 70px; /* 🔥 plus grand */
-                display: block;
+                width: 100%;
+                max-height: 80px;
+                object-fit: contain;
             }
 
-            .site-header nav {
+            .sidebar-nav {
                 display: flex;
-                align-items: center;
-                gap: 30px; /* espace entre boutons */
+                flex-direction: column;
+                gap: 15px;
             }
 
-            .site-header nav a {
+            .sidebar-nav a {
                 color: white;
                 text-decoration: none;
                 font-weight: 600;
-                font-size: 16px;
+                padding: 8px 12px;
+                border-radius: 6px;
+                transition: background 0.2s ease;
             }
 
-            main {
-                flex: 1; 
-                padding: 40px 0;
-                text-align: center;
+            .sidebar-nav a:hover {
+                background: rgba(255,255,255,0.15);
             }
+
+            .sidebar-bottom {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .logout-link {
+                color: #f87171;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .locale-switcher {
+                display: flex;
+                gap: 10px;
+                font-size: 20px;
+            }
+
+            /* ===== MAIN CONTENT ===== */
+
+            .main-content {
+                flex: 1;
+                padding: 40px;
+            }
+
+            /* ===== FOOTER ===== */
 
             .site-footer {
                 background: #111827;
@@ -75,17 +98,14 @@
     {% endblock %}
 
     {% block importmap %}{{ importmap('app') }}{% endblock %}
-    {% block javascripts %}{% endblock %}
 </head>
 <body>
 
     {% include 'partials/_header.html.twig' %}
 
-    <main>
+    <div class="main-content">
         {% block body %}{% endblock %}
-    </main>
-
-    {% include 'partials/_footer.html.twig' %}
+    </div>
 
 </body>
 </html>

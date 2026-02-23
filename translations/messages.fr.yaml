@@ -21,60 +21,7 @@ connexion: "Connexion"
 delete: "Supprimer"
 backToList: "Retourner à la liste"
 logout: "Déconnexion"
-
-
-EditClient:
-    title:  "Modifier le client"
-
-ClientList:
-    title: "Liste des clients"
-    id: "Id"
-    customerNumber: "Numéro client"
-    actions: "Actions"
-    show: "Détails"
-    edit: "Modifier"
-    noClient: "Aucun client trouvé"
-    new: "Nouveau client"
-
-NewClient:
-    title: "Créer un nouveau client"
-
-ShowClient:
-    title: "Client"
-
-EditAccount:
-    title: "Modifier le compte"
-
-AccountList:
-    id: "Id"
-    accountNumber: "Numéro de compte"
-    balance: "Solde"
-    overdraft: "Découvert"
-    overdraftAuthorized: "Découvert autorisé"
-    actions: "Actions"
-    show: "Détails"
-    edit: "Modifier"
-    spar: "Épargner"
-    withdraw: "Débiter"
-    noAccount: "Aucun compte trouvé"
-    new: "Créer un nouveau compte"
-
-EpargnerAccount:
-    title: "Épargner sur le compte"
-
-DebiterAccount:
-    title: "Débiter le compte"
-
-form:
-    amount: "Montant"
-
-
-NewAccount:
-    title: "Créer un nouveau compte"
-
-ShowAccount:
-    title: "Compte"
-
+    
 EditUser:
     title: "Modifier l'utilisateur"
 

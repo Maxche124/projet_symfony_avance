@@ -61,18 +61,3 @@ Vous pouvez aussi utiliser `sh` au lieu de `bash`
 ### [Gitlab](https://gitlab.univ-lorraine.fr/e14663u/app-banque)
 Toujours réaliser un pull avant de push afin de merge en amont
 Les commit sont normalement publié instantanément sur le discord du projet mais cela n'exclus pas une seconde vérification par un pull/fetch
-### [Trello](https://trello.com/b/O1INTRkS/but3qualdevsuivi7)
-Pour éviter de travailler a deux sur une même feature ou amélioration veillez à vous saisir d'une carte kamban sur Trello
-Vous pouvez également déclaré votre prise d'activité sur discord
-### Projet legacy
-Le projet legacy est une bonne base de travail, nous voulons améliorer l'existant mais retrouver ce qui fonctionnait  
-#### [Github](https://github.com/Kyusaor/BUT3_QUALDEV_7)
-#### [Documentation](https://documentation-gp7-qualite-dev.netlify.app/installation%20et%20configuration/)
-#### [SonarCloud](https://sonarcloud.io/project/overview?id=Kyusaor_BUT3_QUALDEV_7)
-
-## Limitations
-### Docker
-Pour le moment le docker compose ne permet pas de monter un environnement de développement, nous souhaitons palier à ça à l'avenir pour streamliner le développement.
-
-### Style
-À ce jour le style de l'application est très rudimentaire et n'est pas responsive, ce à quoi nous souhaitons remédier dans le futur.
