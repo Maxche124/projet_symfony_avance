@@ -70,6 +70,9 @@ Le projet legacy est une bonne base de travail, nous voulons améliorer l'exista
 #### [Documentation](https://documentation-gp7-qualite-dev.netlify.app/installation%20et%20configuration/)
 #### [SonarCloud](https://sonarcloud.io/project/overview?id=Kyusaor_BUT3_QUALDEV_7)
 
-## Limitation
+## Limitations
 ### Docker
 Pour le moment le docker compose ne permet pas de monter un environnement de développement, nous souhaitons palier à ça à l'avenir pour streamliner le développement.
+
+### Style
+À ce jour le style de l'application est très rudimentaire et n'est pas responsive, ce à quoi nous souhaitons remédier dans le futur.
