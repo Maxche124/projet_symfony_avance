@@ -98,3 +98,6 @@ NewUser:
 
 ShowUser:
     title: "Utilisateur"
+
+IndexUser:
+    title: "Liste des utilisateurs"

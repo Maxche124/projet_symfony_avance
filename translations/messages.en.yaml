@@ -74,7 +74,7 @@ EditUser:
 UserList:
     id: "Id"
     email: "Email"
-    roles: "Rôle"
+    roles: "Role"
     password: "Password"
     firstName: "First name"
     lastName: "Last name"
@@ -85,10 +85,13 @@ UserList:
     new: "Create new"
 
 NewUser:
-    title: "Crate a new user"
+    title: "Create a new user"
 
 ShowUser:
     title: "User"
+
+IndexUser:
+    title: "List of users"
 
 
 

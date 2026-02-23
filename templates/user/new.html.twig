@@ -3,9 +3,10 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
     <h1>{{ 'NewUser.title'|trans }}</h1>
 
     {{ include('user/_form.html.twig') }}
 
-    <a href="{{ path('app_user_index') }}">{{ 'backToList' }}</a>
+    <a class="btn btn-secondary mt-3" href="{{ path('app_user_index') }}">{{ 'backToList'|trans }}</a>
 {% endblock %}
