@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
+
+<h1>{{ 'IndexProduit.title'|trans }}</h1>
+<p class="text-muted small">
+    {{ 'ProduitList.sortInfo'|trans }}
+</p>
+
+{% set currentSort = app.request.get('sort') %}
+{% set currentDirection = app.request.get('direction') %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a href="{{ path('app_produit_index', {
+                    sort: 'id',
+                    direction: currentSort == 'id' and currentDirection == 'asc' ? 'desc' : 'asc'
+                }) }}">
+                    {{ 'ProduitList.id'|trans }}
+                </a>
+            </th>
+
+            <th>
+                <a href="{{ path('app_produit_index', {
+                    sort: 'name',
+                    direction: currentSort == 'name' and currentDirection == 'asc' ? 'desc' : 'asc'
+                }) }}">
+                    {{ 'ProduitList.name'|trans }}
+                </a>
+            </th>
+
+            <th>{{ 'ProduitList.description'|trans }}</th>
+
+            <th>
+                <a href="{{ path('app_produit_index', {
+                    sort: 'price',
+                    direction: currentSort == 'price' and currentDirection == 'asc' ? 'desc' : 'asc'
+                }) }}">
+                    {{ 'ProduitList.price'|trans }}
+                </a>
+            </th>
+
+            <th>{{ 'ProduitList.actions'|trans }}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for produit in produits %}
+        <tr>
+            <td>{{ produit.id }}</td>
+            <td>{{ produit.name }}</td>
+            <td>{{ produit.description }}</td>
+            <td>{{ produit.price }} €</td>
+
+            <td>
+                <a class="btn btn-sm btn-outline-primary"
+                   href="{{ path('app_produit_show', {'id': produit.id}) }}">
+                    {{ 'ProduitList.show'|trans }}
+                </a>
+
+                <a class="btn btn-sm btn-outline-secondary"
+                   href="{{ path('app_produit_edit', {'id': produit.id}) }}">
+                    {{ 'ProduitList.edit'|trans }}
+                </a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">{{ 'ProduitList.noProduit'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a class="btn btn-primary mt-3"
+   href="{{ path('app_produit_new') }}">
+    {{ 'ProduitList.new'|trans }}
+</a>
+
+{% endblock %}

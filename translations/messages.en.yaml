@@ -1,5 +1,5 @@
 home:
-    title: "Welcome to your banking application"
+    title: "Welcome to your tech shop"
     text: "Please log in to access your account."
 
 header:
@@ -16,6 +16,9 @@ connexion: "Sign in"
 delete: "Delete"
 backToList: "Back to list"
 logout: "Log out"
+
+User:
+    name: "Users"
 
 EditUser:
     title: "Edit user"
@@ -42,6 +45,22 @@ ShowUser:
 IndexUser:
     title: "List of users"
 
+Produit:
+    name: "Products"
+
+IndexProduit:
+    title: "Products"
+
+ProduitList:
+    id: "Identifier"
+    name: "Product name"
+    description : "Description"
+    price: "Price"
+    actions: "Actions"
+    show: "Details"
+    edit: "Edit"
+    new: "Add a new product"
+    sortInfo: "Click on the column titles (ID, Name, Price) to sort the elements in a different way."
 
 
 

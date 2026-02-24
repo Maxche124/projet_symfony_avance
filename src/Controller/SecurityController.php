@@ -44,11 +44,11 @@ class SecurityController extends AbstractController
         }
 
         if ($this->isGranted('ROLE_MANAGER')) {
-            return $this->redirectToRoute('app_client_index');
+            return $this->redirectToRoute('app_user_index');
         }
 
         if ($this->isGranted('ROLE_USER')) {
-            return $this->redirectToRoute('app_compte_client');
+            return $this->redirectToRoute('app_produit_index');
         }
 
         return $this->redirectToRoute('app_home');

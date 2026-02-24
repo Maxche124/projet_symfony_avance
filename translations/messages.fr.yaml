@@ -3,14 +3,11 @@ roles:
     ROLE_MANAGER: "Gestionnaire"
 
 home:
-    title: "Bienvenue sur votre application bancaire"
+    title: "Bienvenue sur votre boutique informatique"
     text: "Veuillez vous connecter pour avoir accès à votre compte."
 
 header:
     home: "Accueil"
-    clients: "Clients"
-    all_accounts: "Comptes"
-    my_accounts: "Mes comptes"
 
 login:
     loggedAs: "Vous êtes connecté en tant que "
@@ -21,6 +18,9 @@ connexion: "Connexion"
 delete: "Supprimer"
 backToList: "Retourner à la liste"
 logout: "Déconnexion"
+
+User:
+    name: "Utilisateurs"
     
 EditUser:
     title: "Modifier l'utilisateur"
@@ -48,3 +48,20 @@ ShowUser:
 
 IndexUser:
     title: "Liste des utilisateurs"
+
+Produit:
+    name: "Produits"
+
+IndexProduit:
+    title: "Liste des produits"
+
+ProduitList:
+    id: "Identifiant"
+    name: "Nom du produit"
+    description : "Description du produit"
+    price: "Prix"
+    actions: "Actions"
+    show: "Détails"
+    edit: "Modifier"
+    new: "Ajouter un produit"
+    sortInfo: "Cliquez sur les titres des colonnes (ID, Nom, Prix) pour modifier le tri."

@@ -1,45 +1,43 @@
 <aside class="sidebar">
     <div class="sidebar-top">
-        <a href="{{ path('app_produit_index') }}" class="logo-link">
-            <img src="{{ asset('assets/images/logo_iut.png') }}" alt="Logo" class="logo-img">
+        <a href="{{ path('app_home') }}" class="logo-link">
+            <img src="{{ asset('../assets/images/logo_iut.png') }}" alt="Logo" class="logo-img">
         </a>
 
         <nav class="sidebar-nav">
             <a href="{{ path('app_produit_index') }}">
-                {{ 'Produits'|trans }}
+                {{ 'Produit.name'|trans }}
             </a>
 
             {% if app.user and (is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')) %}
                 <a href="{{ path('app_user_index') }}">
-                    {{ 'Utilisateurs'|trans }}
+                    {{ 'User.name'|trans }}
+                </a>
+            {% endif %}
+
+            <div class="locale-switcher">
+                <a href="{{ path(app.request.attributes.get('_route'),
+                    app.request.attributes.get('_route_params') | merge({'_locale': 'fr'})) }}">
+                    🇫🇷
+                </a>
+                <a href="{{ path(app.request.attributes.get('_route'),
+                    app.request.attributes.get('_route_params') | merge({'_locale': 'en'})) }}">
+                    🇬🇧
+                </a>
+            </div>
+
+            {% if app.user %}
+                <span class="user-info">
+                    {{ app.user.fullName ?? app.user.email }}
+                </span>
+                <a href="{{ path('app_logout') }}" class="logout-link">
+                    {{ 'logout'|trans }}
+                </a>
+            {% else %}
+                <a href="{{ path('app_login') }}">
+                    {{ 'connexion'|trans }}
                 </a>
             {% endif %}
         </nav>
-    </div>
-
-    <div class="sidebar-bottom">
-        {% if app.user %}
-            <span class="user-info">
-                {{ app.user.fullName ?? app.user.email }}
-            </span>
-            <a href="{{ path('app_logout') }}" class="logout-link">
-                {{ 'Déconnexion'|trans }}
-            </a>
-        {% else %}
-            <a href="{{ path('app_login') }}">
-                {{ 'Connexion'|trans }}
-            </a>
-        {% endif %}
-
-        <div class="locale-switcher">
-            <a href="{{ path(app.request.attributes.get('_route'),
-                app.request.attributes.get('_route_params') | merge({'_locale': 'fr'})) }}">
-                🇫🇷
-            </a>
-            <a href="{{ path(app.request.attributes.get('_route'),
-                app.request.attributes.get('_route_params') | merge({'_locale': 'en'})) }}">
-                🇬🇧
-            </a>
-        </div>
     </div>
 </aside>

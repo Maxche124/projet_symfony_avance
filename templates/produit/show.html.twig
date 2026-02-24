@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
+
+    <h1>{{ 'ShowProduit.title'|trans }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>{{ 'ProduitList.id'|trans }}</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+
+            <tr>
+                <th>{{ 'ProduitList.name'|trans }}</th>
+                <td>{{ produit.name }}</td>
+            </tr>
+
+            <tr>
+                <th>{{ 'ProduitList.description'|trans }}</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+
+            <tr>
+                <th>{{ 'ProduitList.price'|trans }}</th>
+                <td>{{ produit.price }} €</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-sm btn-outline-secondary mt-3"
+       href="{{ path('app_produit_index') }}">
+        {{ 'backToList'|trans }}
+    </a>
+
+    <a class="btn btn-sm btn-outline-primary mt-3"
+       href="{{ path('app_produit_edit', {'id': produit.id}) }}">
+        {{ 'ProduitList.edit'|trans }}
+    </a>
+
+    {{ include('produit/_delete_form.html.twig') }}
+
+{% endblock %}

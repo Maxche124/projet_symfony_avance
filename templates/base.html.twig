@@ -7,7 +7,7 @@
     {% block stylesheets %}
         <style>
             html, body {
-                height: 100%;
+                height: 100vh;
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
                 background: #f4f6f9;
@@ -17,27 +17,36 @@
                 display: flex;
             }
 
-            /* ===== SIDEBAR ===== */
-
             .sidebar {
                 width: 250px;
                 background: #1e3a8a;
                 color: white;
+
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                padding: 25px 15px;
+
+                padding: 20px;
+                position: fixed;
+                height: 100vh;
+
             }
 
             .sidebar-top {
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 25px;
+            }
+
+            .sidebar-top-actions {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
 
             .logo-img {
                 width: 100%;
-                max-height: 80px;
+                max-height: 70px;
                 object-fit: contain;
             }
 
@@ -60,6 +69,8 @@
                 background: rgba(255,255,255,0.15);
             }
 
+            /* Partie basse */
+
             .sidebar-bottom {
                 display: flex;
                 flex-direction: column;
@@ -69,8 +80,8 @@
 
             .logout-link {
                 color: #f87171;
-                text-decoration: none;
                 font-weight: bold;
+                text-decoration: none;
             }
 
             .locale-switcher {
@@ -79,32 +90,53 @@
                 font-size: 20px;
             }
 
-            /* ===== MAIN CONTENT ===== */
-
             .main-content {
                 flex: 1;
-                padding: 40px;
+                margin-left: 250px; /* largeur sidebar */
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
             }
 
-            /* ===== FOOTER ===== */
+            main {
+                flex: 1;
+                padding: 40px;
+                margin-left: 30px;
+            }
 
             .site-footer {
                 background: #111827;
                 color: white;
                 text-align: center;
-                padding: 20px 0;
+                padding: 20px;
+            }
+
+            .table th a {
+                text-decoration: none;
+                color: inherit;
+                font-weight: bold;
+            }
+
+            .table th a:hover {
+                text-decoration: underline;
+                cursor: pointer;
             }
         </style>
     {% endblock %}
 
     {% block importmap %}{{ importmap('app') }}{% endblock %}
 </head>
+
 <body>
 
     {% include 'partials/_header.html.twig' %}
 
     <div class="main-content">
-        {% block body %}{% endblock %}
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        {% include 'partials/_footer.html.twig' %}
     </div>
 
 </body>

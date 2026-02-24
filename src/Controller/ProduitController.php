@@ -16,11 +16,23 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('ROLE_MANAGER')]
 final class ProduitController extends AbstractController
 {
-    #[Route(name: 'app_produit_index', methods: ['GET'])]
-    public function index(ProduitRepository $produitRepository): Response
+    #[Route('/', name: 'app_produit_index', methods: ['GET'])]
+    public function index(Request $request, ProduitRepository $produitRepository): Response
     {
+        $sort = $request->query->get('sort', 'id');
+        $direction = $request->query->get('direction', 'asc');
+
+        $allowedFields = ['id', 'name', 'price'];
+        $direction = strtolower($direction) === 'desc' ? 'DESC' : 'ASC';
+
+        if (!in_array($sort, $allowedFields)) {
+            $sort = 'id';
+        }
+
+        $produits = $produitRepository->findBy([], [$sort => $direction]);
+
         return $this->render('produit/index.html.twig', [
-            'produits' => $produitRepository->findAll(),
+            'produits' => $produits,
         ]);
     }
 

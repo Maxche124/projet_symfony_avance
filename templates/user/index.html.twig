@@ -15,8 +15,6 @@
                 <th>{{ 'UserList.password'|trans }}</th>
                 <th>{{ 'UserList.firstName'|trans }}</th>
                 <th>{{ 'UserList.lastName'|trans }}</th>
-                <th>{{ 'UserList.address'|trans }}</th>
-                <th>{{ 'UserList.gender'|trans }}</th>
                 <th>{{ 'UserList.actions'|trans }}</th>
             </tr>
         </thead>
@@ -29,8 +27,6 @@
                 <td>{{ user.password }}</td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
-                <td>{{ user.adresse }}</td>
-                <td>{{ user.gender }}</td>
                 <td>
                     <a class="btn btn-sm btn-outline-primary" href="{{ path('app_user_show', {'id': user.id}) }}">{{ 'UserList.show'|trans }}</a>
                     <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'UserList.edit'|trans }}</a>

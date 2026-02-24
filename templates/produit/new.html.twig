@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Produit{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
+
+    <h1>{{ 'NewProduit.title'|trans }}</h1>
+
+    {{ include('produit/_form.html.twig') }}
+
+    <a class="btn btn-sm btn-outline-secondary mt-3"
+       href="{{ path('app_produit_index') }}">
+        {{ 'backToList'|trans }}
+    </a>
+
+{% endblock %}
