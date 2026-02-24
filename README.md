@@ -16,10 +16,13 @@ docker compose up
 - Allez sur http://localhost:8085 pour voir l'application
 - Les identifiants de connexions test sont généré dans les fixtures `/src/DataFixtures/AppFixtures.php` au cas où les suivants ne sont plus d'actualité
   - Gestionnaire (ROLE_MANAGER)
-    - Email `jean.dupont@example.com`
+    - Email `manager@example.com`
+    - Mot de passe `password123`
+  - Administrateur (ROLE_ADMIN)
+    - Email `admin@example.com`
     - Mot de passe `password123`
   - Client/Utilisateur simple (ROLE_USER)
-    - Email `marie.martin@example.com`
+    - Email `user@example.com`
     - Mot de passe `password123`
 
 ## Développement
