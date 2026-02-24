@@ -3,7 +3,6 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
     <h1>{{ 'IndexUser.title'|trans }}</h1>
 
     <table class="table">
@@ -12,7 +11,6 @@
                 <th>{{ 'UserList.id'|trans }}</th>
                 <th>{{ 'UserList.email'|trans }}</th>
                 <th>{{ 'UserList.roles'|trans }}</th>
-                <th>{{ 'UserList.password'|trans }}</th>
                 <th>{{ 'UserList.firstName'|trans }}</th>
                 <th>{{ 'UserList.lastName'|trans }}</th>
                 <th>{{ 'UserList.actions'|trans }}</th>
@@ -24,7 +22,6 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>

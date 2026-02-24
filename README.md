@@ -55,7 +55,7 @@ docker ps -a
 ```
 - ouvrir un terminal d'un container ouvert _(notamment utile pour accéder au container du compose)_
 ```bash
-# remplaçais bien {container id}
+# remplacez bien {container id}
 docker exec -it {container id} bash
 ```
 Vous pouvez aussi utiliser `sh` au lieu de `bash`
@@ -63,4 +63,3 @@ Vous pouvez aussi utiliser `sh` au lieu de `bash`
 ## Organisation
 ### [Gitlab](https://gitlab.univ-lorraine.fr/e14663u/app-banque)
 Toujours réaliser un pull avant de push afin de merge en amont
-Les commit sont normalement publié instantanément sur le discord du projet mais cela n'exclus pas une seconde vérification par un pull/fetch

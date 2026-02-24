@@ -3,7 +3,6 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ asset('../assets/styles/app.css') }}">
     <h1>{{ 'ShowUser.title'|trans }}</h1>
 
     <table class="table">
@@ -19,10 +18,6 @@
             <tr>
                 <th>{{ 'UserList.roles'|trans }}</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'UserList.password'|trans }}</th>
-                <td>{{ user.password }}</td>
             </tr>
             <tr>
                 <th>{{ 'UserList.firstName'|trans }}</th>

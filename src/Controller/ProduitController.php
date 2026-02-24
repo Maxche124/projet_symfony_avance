@@ -36,26 +36,73 @@ final class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
+    #[Route('/produit/new', name: 'app_produit_new')]
     public function new(
         Request $request,
         EntityManagerInterface $entityManager
-    ): Response
-    {
-        $produit = new Produit();
-        $form = $this->createForm(ProduitType::class, $produit);
+    ): Response {
+
+        $session = $request->getSession();
+
+        $step = $session->get('product_step', 1);
+        $productData = $session->get('product_data', []);
+
+        $form = match($step) {
+
+            1 => $this->createForm(ProductTypeStepType::class, $productData),
+
+            2 => $this->createForm(ProductDetailsStepType::class, $productData),
+
+            3 => isset($productData['type']) && $productData['type'] === 'physical'
+                ? $this->createForm(ProductLogisticsStepType::class, $productData)
+                : $this->createForm(ProductLicenseStepType::class, $productData),
+
+            4 => $this->createForm(ProductConfirmStepType::class, $productData),
+
+            default => $this->createForm(ProductTypeStepType::class, $productData)
+        };
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($produit);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+            $productData = array_merge(
+                $productData,
+                $form->getData()
+            );
+
+            $session->set('product_data', $productData);
+
+            if ($step === 1 && isset($productData['price']) && $productData['price'] > 1000) {
+                $session->set('product_step', 3);
+            } else {
+                $session->set('product_step', $step + 1);
+            }
+
+            if ($step === 4) {
+
+                $product = new Produit();
+
+                $product->setName($productData['name']);
+                $product->setDescription($productData['description']);
+                $product->setPrice($productData['price']);
+
+                $entityManager->persist($product);
+                $entityManager->flush();
+
+                $session->remove('product_step');
+                $session->remove('product_data');
+
+                return $this->redirectToRoute('app_produit_index');
+            }
+
+            return $this->redirectToRoute('app_produit_new');
         }
 
         return $this->render('produit/new.html.twig', [
-            'produit' => $produit,
-            'form' => $form,
+            'form' => $form->createView(),
+            'step' => $step,
+            'total_steps' => 4
         ]);
     }
 

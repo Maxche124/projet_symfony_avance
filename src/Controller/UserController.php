@@ -66,12 +66,9 @@ final class UserController extends AbstractController
     public function edit(
         Request $request,
         User $user,
-        UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager
     ): Response
     {
-        $originalPassword = $user->getPassword();
-
         $form = $this->createForm(UserType::class, $user, [
             'validation_groups' => ['Default'],
         ]);
@@ -79,11 +76,6 @@ final class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            if ($user->getPassword() !== $originalPassword) {
-                $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
-                $user->setPassword($hashedPassword);
-            }
 
             $entityManager->flush();
 

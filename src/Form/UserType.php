@@ -40,14 +40,14 @@ class UserType extends AbstractType
                 'expanded' => true,
             ])
 
-            ->add('password', RepeatedType::class, [
+            /*->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => true,
                 'required' => true,
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmation du mot de passe'],
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
-            ])
+            ])*/
         ;
     }
 
