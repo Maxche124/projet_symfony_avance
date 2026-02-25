@@ -4,7 +4,7 @@
 
 - Clonez le dépôt localement
 ```bash
-git clone https://github.com/Maxche124/projet_symfony_avance
+git clone https://github.com/Maxche124/projet_symfony_avance.git
 ```
 - Composez le projet sur Docker via le fichier *compose.yaml* présent à la racine
 ```bash
@@ -78,4 +78,5 @@ Vous pouvez aussi utiliser `sh` au lieu de `bash`
 ### [Github]([https://github.com/Maxche124/projet_symfony_avance/])
 
 Toujours réaliser un pull avant de push afin de merge en amont
+
 
