@@ -45,7 +45,9 @@
                 </a>
             </th>
 
-            <th>{{ 'ProduitList.actions'|trans }}</th>
+            {% if is_granted('ROLE_MANAGER') %}
+                <th>{{ 'ProduitList.actions'|trans }}</th>
+            {% endif %}
         </tr>
     </thead>
 
@@ -57,17 +59,26 @@
             <td>{{ produit.description }}</td>
             <td>{{ produit.price }} €</td>
 
-            <td>
-                <a class="btn btn-sm btn-outline-primary"
-                   href="{{ path('app_produit_show', {'id': produit.id}) }}">
-                    {{ 'ProduitList.show'|trans }}
-                </a>
-
-                <a class="btn btn-sm btn-outline-secondary"
-                   href="{{ path('app_produit_edit', {'id': produit.id}) }}">
-                    {{ 'ProduitList.edit'|trans }}
-                </a>
-            </td>
+            {% if is_granted('ROLE_MANAGER') %}
+                <td>
+                    <a class="btn btn-sm btn-outline-primary"
+                        href="{{ path('app_produit_show', {'id': produit.id}) }}">
+                        {{ 'ProduitList.show'|trans }}
+                    </a>
+            
+                    <a class="btn btn-sm btn-outline-secondary"
+                    href="{{ path('app_produit_edit', {'id': produit.id}) }}">
+                        {{ 'ProduitList.edit'|trans }}
+                    </a>
+                </td>
+            {% else %}
+                <td>
+                    <a class="btn btn-sm btn-outline-primary"
+                        href="{{ path('app_produit_show', {'id': produit.id}) }}">
+                        {{ 'ProduitList.show'|trans }}
+                    </a>
+                </td>
+            {% endif %}
         </tr>
     {% else %}
         <tr>
@@ -77,9 +88,16 @@
     </tbody>
 </table>
 
-<a class="btn btn-primary mt-3"
-   href="{{ path('app_produit_new') }}">
-    {{ 'ProduitList.new'|trans }}
-</a>
+{% if is_granted('ROLE_MANAGER') %}
+    <a class="btn btn-primary mt-3"
+    href="{{ path('app_produit_new') }}">
+        {{ 'ProduitList.new'|trans }}
+    </a>
+
+    <a class="btn btn-success mt-3 ms-2"
+       href="{{ path('app_produit_export_csv') }}">
+        Export CSV
+    </a>
+{% endif %}
 
 {% endblock %}

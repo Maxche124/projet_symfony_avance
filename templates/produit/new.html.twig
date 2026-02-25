@@ -1,17 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau produit{% endblock %}
-
 {% block body %}
 
-    <h1>{{ 'NewProduit.title'|trans }}</h1>
+<h1>Ajout d'un produit</h1>
 
-    {{ include('produit/_form.html.twig') }}
+<div class="progress-container">
+    {% for i in 1..4 %}
+        <span class="step {{ step == i ? 'active' : '' }}">{{ i }}</span>
+    {% endfor %}
+</div>
 
-    
-    <a class="btn btn-sm btn-outline-secondary mt-3"
-       href="{{ path('app_produit_index') }}">
-        {{ 'backToList'|trans }}
-    </a>
+<h3>
+    {% if step == 1 %}Type de produit{% endif %}
+    {% if step == 2 %}Détails{% endif %}
+    {% if step == 3 %}Configuration{% endif %}
+    {% if step == 4 %}Confirmation{% endif %}
+</h3>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <div class="mt-3">
+        {% if step > 1 %}
+            <a href="{{ path('app_produit_new', {step: step-1}) }}"
+               class="btn btn-secondary">Précédent</a>
+        {% endif %}
+
+        <button class="btn btn-primary">
+            {% if step == 4 %}Valider{% else %}Suivant{% endif %}
+        </button>
+    </div>
+{{ form_end(form) }}
 
 {% endblock %}
