@@ -4,7 +4,7 @@
 
 - Clonez le dépôt localement
 ```bash
-git clone https://gitlab.univ-lorraine.fr/e14663u/app-banque.git
+git clone https://github.com/Maxche124/projet_symfony_avance
 ```
 - Composez le projet sur Docker via le fichier *compose.yaml* présent à la racine
 ```bash
@@ -47,6 +47,14 @@ composer update
 composer install
 ```
 
+## Fonctionnalités
+
+L'application possède un panneau de navigation à gauche permettant de changer la langue (boutons drapeaux), de se connecter et d'accéder aux différentes pages du site.
+
+Une fois connecté avec l'un des compte fournis ci-dessus, différentes pages seront accessibles : 
+- En tant qu'utilisateur simple (ROLE_USER), seule la liste des produits sera accessible, sans possibilité d'accéder au CRUD (sauf les détails de chaque produit)
+- En tant que manager (ROLE_MANAGER), tout sera accessible, à savoir la liste des produits, celle des utilisateurs, la possibilité de les gérer (boutons détails, suppression, création et modification disponibles) et un bouton en bas de la liste des produits permettant de l'exporter en CSV.
+
 ### Rappel
 
 - lister les container
@@ -61,5 +69,6 @@ docker exec -it {container id} bash
 Vous pouvez aussi utiliser `sh` au lieu de `bash`
 
 ## Organisation
-### [Gitlab](https://gitlab.univ-lorraine.fr/e14663u/app-banque)
+### [Github]([https://github.com/Maxche124/projet_symfony_avance/])
+
 Toujours réaliser un pull avant de push afin de merge en amont
