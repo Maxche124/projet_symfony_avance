@@ -55,6 +55,12 @@ Une fois connecté avec l'un des compte fournis ci-dessus, différentes pages se
 - En tant qu'utilisateur simple (ROLE_USER), seule la liste des produits sera accessible, sans possibilité d'accéder au CRUD (sauf les détails de chaque produit)
 - En tant que manager (ROLE_MANAGER), tout sera accessible, à savoir la liste des produits, celle des utilisateurs, la possibilité de les gérer (boutons détails, suppression, création et modification disponibles) et un bouton en bas de la liste des produits permettant de l'exporter en CSV.
 
+Une commande pour importer un fichier CSV dans la base de données est également disponible. Pour l'utiliser, ouvrir le projet dans un terminal ou dans un IDE puis entrer dans ledit Terminal la commande : 
+
+```bash
+php bin/console app:produit:import produits.csv
+```
+
 ### Rappel
 
 - lister les container
@@ -72,3 +78,4 @@ Vous pouvez aussi utiliser `sh` au lieu de `bash`
 ### [Github]([https://github.com/Maxche124/projet_symfony_avance/])
 
 Toujours réaliser un pull avant de push afin de merge en amont
+
